@@ -1,9 +1,13 @@
+enum Role {
+    Admin = 1,
+    Users
+}
 class User {
     protected name : string;
     protected email : string;
-    role : number ;
+    role : Role ;
 
-    constructor(name: string, email: string, role: number) {
+    constructor(name: string, email: string, role: Role) {
         this.name = name;
         this.email = email;
         this.role = role;
@@ -17,17 +21,16 @@ class User {
     setRole(role) {
         this.role = role;
     }
-    getInfo() {
-        return `Ten: ${this.name} va email: ${this.email}`;
-    }
     isAmin() {
         if(this.role===1) {
-            console.log('Admin');
-        }else if(this.role===2) {
-            console.log('user');
+            return 'Admin';
+        }else {
+            return 'Users';
         }
     }
+    getInfo() {
+        return `Ten: ${this.name} va email: ${this.email} la ${this.isAmin()}`;
+    }
 }
-let user = new User('son','son@vn',1);
-console.log(user.getInfo());
-user.isAmin();
+let user1 = new User('son','son@vn',Role.Users);
+console.log(user1.getInfo());

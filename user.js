@@ -1,3 +1,8 @@
+var Role;
+(function (Role) {
+    Role[Role["Admin"] = 1] = "Admin";
+    Role[Role["user"] = 2] = "user";
+})(Role || (Role = {}));
 var User = /** @class */ (function () {
     function User(name, email, role) {
         this.name = name;
@@ -13,23 +18,18 @@ var User = /** @class */ (function () {
     User.prototype.setRole = function (role) {
         this.role = role;
     };
-    Object.defineProperty(User.prototype, "getInfo", {
-        get: function () {
-            return ("Ten: ".concat(this.name, " va email: ").concat(this.email));
-        },
-        enumerable: false,
-        configurable: true
-    });
     User.prototype.isAmin = function () {
         if (this.role === 1) {
-            console.log('Admin');
+            return 'Admin';
         }
-        else if (this.role === 2) {
-            console.log('Users');
+        else {
+            return 'user';
         }
+    };
+    User.prototype.getInfo = function () {
+        return "Ten: ".concat(this.name, " va email: ").concat(this.email, " la ").concat(this.isAmin());
     };
     return User;
 }());
-var user = new User('son', 'son@vn', 1);
-console.log(user.getInfo);
-user.isAmin();
+var user1 = new User('son', 'son@vn', 3);
+console.log(user1.getInfo());

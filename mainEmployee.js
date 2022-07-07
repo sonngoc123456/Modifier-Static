@@ -1,0 +1,13 @@
+"use strict";
+exports.__esModule = true;
+var Employee_1 = require("./Employee");
+var EmployeeManager_1 = require("./EmployeeManager");
+var employee1 = new Employee_1.Employee('Nguyen', 'A', new Date('2020-10-5'), 'hanoi', 'nhanvien');
+var employee2 = new Employee_1.Employee('Nguyen', 'B', new Date('2020-10-7'), 'hanoi2', 'nhanvien');
+var employee3 = new Employee_1.Employee('Nguyen', 'C', new Date('2020-10-9'), 'lk', 'nv');
+var employeeManager = new EmployeeManager_1.EmployeeManager();
+employeeManager.add = employee1;
+employeeManager.add = employee2;
+employeeManager.add = employee3;
+employeeManager.deleteEmployee(1);
+console.log(employeeManager.getInfo);
